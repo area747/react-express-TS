@@ -17,7 +17,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "commonjs",
+    "module": "ESNext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "jsx": "react-jsx",
@@ -33,7 +33,8 @@
     "node_modules"
   ],
   "include": [
-    "server/src/**/*.ts"
+    "server/src/**/*.ts",
+    "client/src/**/*.ts"
     //"./src/**/*"
   ]
 }

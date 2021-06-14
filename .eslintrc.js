@@ -9,9 +9,9 @@ module.exports = {
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
     ],
-    plugins: ['prettier', '@typescript-eslint'],
+    plugins: [ 'prettier', '@typescript-eslint' ],
     rules: {
-        @typescript-eslint/no-var-requires:0
+        '@typescript-eslint/no-var-requires': 0,
         'prettier/prettier': [
             'error',
             {

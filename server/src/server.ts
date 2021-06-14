@@ -2,8 +2,8 @@ import e from "express";
 import path from "path";
 
 const app = e();
-const root = path.join(__dirname,'..','client','build');
+//const root = path.join(__dirname,'..','client','build');
 
-app.use(e.static(root));
+//app.use(e.static(root));
 
-app.listen(7000);
+app.listen( 7000 );
