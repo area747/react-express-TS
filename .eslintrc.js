@@ -8,6 +8,8 @@ module.exports = {
         'eslint:recommended',
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
+        'plugin:prettier/recommended',
+        'prettier/@typescript-eslint',
     ],
     plugins: [ 'prettier', '@typescript-eslint' ],
     rules: {
@@ -20,7 +22,7 @@ module.exports = {
                 useTabs: false,
                 tabWidth: 4,
                 printWidth: 80,
-                bracketSpacing: true,
+                bracketSpacing: false,
                 arrowParens: 'avoid',
                 endOfLine: 'auto',
             },
