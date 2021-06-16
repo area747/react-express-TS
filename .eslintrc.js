@@ -9,9 +9,11 @@ module.exports = {
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
         'plugin:prettier/recommended',
-        'prettier/@typescript-eslint',
+        'prettier',
+        //'prettier@typescript-eslint'
     ],
-    plugins: [ 'prettier', '@typescript-eslint' ],
+
+    plugins: ['prettier', '@typescript-eslint'],
     rules: {
         '@typescript-eslint/no-var-requires': 0,
         'prettier/prettier': [
@@ -22,7 +24,7 @@ module.exports = {
                 useTabs: false,
                 tabWidth: 4,
                 printWidth: 80,
-                bracketSpacing: false,
+                bracketSpacing: true,
                 arrowParens: 'avoid',
                 endOfLine: 'auto',
             },
