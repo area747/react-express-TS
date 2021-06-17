@@ -5,15 +5,27 @@
     "tasks": [
         {
             "type": "shell",
+            "command": "npm run-script build",
+            "label": "react"
+        },
+        {
+            "type": "shell",
             "command": "tsc -p .",
             "problemMatcher": [
                 "$tsc"
             ],
             "group": {
-				"kind": "build",
-				"isDefault": true
-			},
+                "kind": "build",
+                "isDefault": true
+            },
             "label": "TSC",
+        },
+        {
+            "label": "Build",
+            "dependsOn": [
+                "TSC",
+                "react"
+            ]
         }
     ]
 }

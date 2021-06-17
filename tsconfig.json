@@ -33,8 +33,7 @@
     "node_modules"
   ],
   "include": [
-    "server/src/**/*.ts",
-    "client/src/**/*.ts"
+    "server/src/**/*.ts"
     //"./src/**/*"
   ]
 }

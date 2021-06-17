@@ -12,12 +12,13 @@
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}\\server\\src\\server.ts",
-            "preLaunchTask": "TSC",
-            "outFiles": ["${workspaceFolder}/server/dist/**/*.js"],
+            "preLaunchTask": "Build",
+            "outFiles": [
+                "${workspaceFolder}/server/dist/**/*.js"
+            ],
         }
     ]
 }
-
 // {
 //     "type": "pwa-node",
 //     "request": "launch",
