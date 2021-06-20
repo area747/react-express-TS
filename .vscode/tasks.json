@@ -24,7 +24,7 @@
             "label": "Build",
             "dependsOn": [
                 "TSC",
-                "react"
+                // "react"
             ]
         }
     ]

@@ -1,4 +1,7 @@
 {
+  "ts-node": {
+    "files": true
+  },
   "compilerOptions": {
     "target": "ES6",
     "lib": [
@@ -24,7 +27,8 @@
     "outDir": "./server/dist",
     "typeRoots": [
       "./node_modules/@types",
-      "types"
+      "./server/src/@types",
+      "./@types",
     ],
     "isolatedModules": true,
     //"noEmit": true
