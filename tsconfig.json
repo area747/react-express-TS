@@ -30,6 +30,10 @@
       "./server/src/@types",
       "./@types",
     ],
+    "baseUrl": "./",
+    "paths":{
+      "types":["./types"]
+    },
     "isolatedModules": true,
     //"noEmit": true
   },

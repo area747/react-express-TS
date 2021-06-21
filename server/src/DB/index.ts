@@ -8,7 +8,7 @@ const connection = mysql.createPool({
     user: 'root',
     password: '1234',
     port: 3306,
-    database: 'user',
+    database: 'sams',
 });
 const format: Format = {language: 'sql', indent: '  '};
 const mapperPath = path.join(process.cwd(), 'server', 'mapper');
