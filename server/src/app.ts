@@ -2,17 +2,18 @@ import e from 'express';
 import session from 'express-session';
 import path from 'path';
 import flash from 'connect-flash';
+import dotenv from 'dotenv';
 import passport from 'passport';
 import passportSetting from './auth';
 import router from './router';
 import {} from './DB';
 //types
-import 'types/express-session/session';
+import {} from 'types/express-session/session';
 
+dotenv.config();
 const app = e();
 const clientPath = path.join(process.cwd(), 'client', 'build');
 passportSetting();
-
 app.use(
     session({
         secret: '#ABCDEFG',

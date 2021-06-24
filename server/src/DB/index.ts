@@ -2,13 +2,15 @@ import mysql from 'mysql2/promise';
 import mybatis, {Format, Params} from 'mybatis-mapper';
 import fs from 'fs';
 import path from 'path';
+import dotenv from 'dotenv';
 
+dotenv.config();
 const connection = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '1234',
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PW,
     port: 3306,
-    database: 'sams',
+    database: 'cirno',
 });
 const format: Format = {language: 'sql', indent: '  '};
 const mapperPath = path.join(process.cwd(), 'server', 'mapper');
