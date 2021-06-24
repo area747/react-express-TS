@@ -76,15 +76,18 @@
     "workbox-webpack-plugin": "5.1.4"
   },
   "devDependencies": {
+    "@types/connect-flash": "^0.0.36",
     "@types/express": "^4.17.12",
     "@types/express-session": "^1.17.3",
     "@types/jest": "^26.0.15",
     "@types/node": "^15.12.2",
     "@types/passport": "^1.0.6",
+    "@types/passport-local": "^1.0.33",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.5.0",
     "@typescript-eslint/parser": "^4.5.0",
+    "connect-flash": "^0.1.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "prettier": "^2.3.1"
