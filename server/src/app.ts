@@ -6,7 +6,6 @@ import dotenv from 'dotenv';
 import passport from 'passport';
 import passportSetting from './auth';
 import router from './router';
-import {} from './DB';
 //types
 import {} from 'types/express-session/session';
 

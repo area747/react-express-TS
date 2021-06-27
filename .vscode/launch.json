@@ -5,17 +5,23 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "node",
+            "type": "pwa-node",
             "request": "launch",
             "name": "프로그램 시작",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\server\\src\\app.ts",
-            "preLaunchTask": "Build",
-            "outFiles": [
-                "${workspaceFolder}/server/dist/**/*.js"
-            ],
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [ "start" ],
+            // "program": "${workspaceFolder}\\server\\src\\app.ts",
+            // "preLaunchTask": "Build",
+            // "outFiles": [
+            //     "${workspaceFolder}/server/dist/**/*.js"
+            // ],
+            "resolveSourceMapLocations": [
+                "${workspaceFolder}/**",
+                "!**/node_modules/**"
+            ]
         }
     ]
 }

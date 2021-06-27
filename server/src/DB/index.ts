@@ -10,23 +10,29 @@ const connection = mysql.createPool({
     user: process.env.DB_USER,
     password: process.env.DB_PW,
     port: 3306,
-    database: 'cirno',
+    database: process.env.DB_NAME,
 });
 const format: Format = {language: 'sql', indent: '  '};
 const mapperPath = path.join(process.cwd(), 'server', 'mapper');
-const ls = fs.readdirSync(mapperPath);
 const mapperList: string[] = [];
-ls.forEach(element => {
-    mapperList.push(path.join(mapperPath, element));
-});
+const ls = fs.readdirSync(mapperPath, {withFileTypes: true});
+(function listMapper(ls: fs.Dirent[], mapperPath): void {
+    ls.forEach(element => {
+        const filePath = path.join(mapperPath, element.name);
+        if (element.isFile()) mapperList.push(filePath);
+        if (element.isDirectory()) listMapper(fs.readdirSync(fs.realpathSync(filePath), {withFileTypes: true}), filePath);
+    });
+})(ls, mapperPath);
+console.log(mapperList);
 mybatis.createMapper(mapperList);
 
-const excute = async (namespace: string, sql: string, param: Params): Promise<Array<any>> => {
+const execute = async (namespace: string, sql: string, param: Params): Promise<Array<any>> => {
     const conn = await connection.getConnection();
     try {
         const query = mybatis.getStatement(namespace, sql, param, format);
         const [row, etc] = await conn.query(query, param);
         conn.release();
+        console.log(query);
         return JSON.parse(JSON.stringify(row));
     } catch (err) {
         console.log(err);
@@ -35,4 +41,4 @@ const excute = async (namespace: string, sql: string, param: Params): Promise<Ar
     }
 };
 
-export default excute;
+export default execute;

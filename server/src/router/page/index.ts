@@ -22,12 +22,15 @@ router.get('/debug', (req, res, next) => {
     res.header('Content-Type', 'application/json');
     res.send(JSON.stringify(results, null, 4));
 });
-router.get('/loginPage', (req, res, next) => {
-    fs.readFile(path.join(clientPath, 'test', 'login.html'), (err, data) => {
+
+router.get('/login', (req, res, next) => {
+    fs.readFile(path.join(clientPath, 'login', 'login.html'), (err, data) => {
         res.end(data);
     });
 });
-router.post('/login', passport.authenticate('local', {successRedirect: '/', failureRedirect: '/loginPage', failureFlash: true}));
+
+router.post('/login', passport.authenticate('local', {successRedirect: '/', failureRedirect: '/login', failureFlash: true}));
+
 router.get('/react', (req, res, next) => {
     fs.readFile(path.join(clientPath, 'main.html'), (err, data) => {
         res.end(data);

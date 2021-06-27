@@ -32,7 +32,8 @@
     ],
     "baseUrl": "./",
     "paths":{
-      "types":["./types"]
+      "types":["./types"],
+      "execute":["./server/src/DB"]
     },
     "isolatedModules": true,
     //"noEmit": true
