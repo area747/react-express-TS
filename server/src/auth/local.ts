@@ -8,7 +8,7 @@ const opt: IStrategyOptionsWithRequest = {usernameField: 'id', passwordField: 'p
 //tempt
 
 const localStrategy = new LocalStrategy(opt, async (req, id, pw, done) => {
-    const res = await execute('user', 'selectUser', {id: id, pw: pw});
+    const res = await execute('user', 'loginUser', {id: id, pw: pw});
     if (res[0]) {
         const user: Express.User = {id: id, pw: pw};
         return done(null, user);

@@ -29,6 +29,10 @@ router.get('/login', (req, res, next) => {
     });
 });
 
+router.get('/auth/kakao/callback', passport.authenticate('kakao', {successRedirect: '/', failureRedirect: '/'}));
+
+router.get('/kakao', passport.authenticate('kakao'));
+
 router.post('/login', passport.authenticate('local', {successRedirect: '/', failureRedirect: '/login', failureFlash: true}));
 
 router.get('/react', (req, res, next) => {
