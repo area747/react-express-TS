@@ -30,9 +30,9 @@ const execute = async (namespace: string, sql: string, param: Params): Promise<A
     const conn = await connection.getConnection();
     try {
         const query = mybatis.getStatement(namespace, sql, param, format);
+        console.log(query);
         const [row, etc] = await conn.query(query, param);
         conn.release();
-        console.log(query);
         return JSON.parse(JSON.stringify(row));
     } catch (err) {
         console.log(err);

@@ -12,8 +12,8 @@ export default (): void => {
     });
 
     passport.deserializeUser(async (userId: number, done) => {
-        const res = await execute('user', 'selectUser', {id: userId});
-        const user: Express.User = {id: '성호', pw: '1234'};
+        const [res] = await execute('user', 'selectUser', {id: userId});
+        const user: Express.User = {id: res.userId, pw: res.userPw, loginType: res.loginType};
         done(null, user);
     });
 };

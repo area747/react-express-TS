@@ -5,6 +5,7 @@ import passport from 'passport';
 
 const router = e.Router();
 const clientPath = path.join(process.cwd(), 'client', 'build');
+router.get('/');
 router.get('/', (req, res, next) => {
     if (req.isAuthenticated()) {
         res.send('hello, World!');

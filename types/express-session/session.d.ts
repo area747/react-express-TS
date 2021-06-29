@@ -12,6 +12,7 @@ declare global {
         interface User {
             id: string;
             pw: string;
+            loginType: string;
         }
     }
 }
