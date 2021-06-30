@@ -3,6 +3,7 @@
     "files": true
   },
   "compilerOptions": {
+    "experimentalDecorators": true,
     "target": "ES6",
     "lib": [
       "es5",
