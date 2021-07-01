@@ -23,7 +23,6 @@ const ls = fs.readdirSync(mapperPath, {withFileTypes: true});
         if (element.isDirectory()) listMapper(fs.readdirSync(fs.realpathSync(filePath), {withFileTypes: true}), filePath);
     });
 })(ls, mapperPath);
-console.log(mapperList);
 mybatis.createMapper(mapperList);
 
 const execute = async (namespace: string, sql: string, param: Params): Promise<Array<any>> => {

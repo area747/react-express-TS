@@ -1,5 +1,5 @@
-import {createConnection, ConnectionOptions} from 'typeorm';
-
+import {ConnectionOptions} from 'typeorm';
+import {SnakeNamingStrategy} from 'typeorm-naming-strategies';
 const connectionOptions: ConnectionOptions = {
     type: 'mysql',
     host: process.env.DB_HOST,
@@ -10,6 +10,7 @@ const connectionOptions: ConnectionOptions = {
     synchronize: true,
     logging: true,
     entities: ['server/src/entities/**/*.ts'],
+    namingStrategy: new SnakeNamingStrategy(),
 };
 
 export default connectionOptions;

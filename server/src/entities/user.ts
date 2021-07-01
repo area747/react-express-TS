@@ -1,16 +1,22 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToMany} from 'typeorm';
+import {Entity, PrimaryGeneratedColumn, Column, OneToMany, BaseEntity} from 'typeorm';
+import {UserProp} from './userProp';
 
 @Entity({name: 'users'})
-export class User {
-    @PrimaryGeneratedColumn('uuid')
-    id!: string;
+export class User extends BaseEntity {
+    constructor(userId: string, userPassword: string) {
+        super();
+        this.userId = userId;
+        this.userPw = userPassword;
+    }
+    @PrimaryGeneratedColumn('increment')
+    seq!: number;
 
     @Column({type: 'varchar'})
-    firstName!: string;
+    userId: string;
 
     @Column({type: 'varchar'})
-    lastName!: string;
+    userPw: string;
 
-    @Column({type: 'varchar'})
-    age!: number;
+    @OneToMany(type => UserProp, userProp => userProp.user)
+    userProps!: UserProp[];
 }
