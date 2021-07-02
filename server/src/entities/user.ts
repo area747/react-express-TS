@@ -1,8 +1,13 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToMany, BaseEntity} from 'typeorm';
+import {Entity, PrimaryGeneratedColumn, Column, OneToMany, BaseEntity, Unique} from 'typeorm';
 import {UserProp} from './userProp';
 
-@Entity({name: 'users'})
-export class User extends BaseEntity {
+enum LoginType {
+    Local = 'local',
+    Kakao = 'kakao',
+}
+@Entity()
+@Unique(['userId', 'loginType'])
+export default class User extends BaseEntity {
     constructor(userId: string, userPassword: string) {
         super();
         this.userId = userId;
@@ -15,7 +20,10 @@ export class User extends BaseEntity {
     userId: string;
 
     @Column({type: 'varchar'})
-    userPw: string;
+    userPw!: string;
+
+    @Column({type: 'enum', enum: LoginType})
+    loginType!: LoginType;
 
     @OneToMany(type => UserProp, userProp => userProp.user)
     userProps!: UserProp[];

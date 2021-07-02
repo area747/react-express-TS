@@ -1,7 +1,7 @@
 import {Entity, PrimaryGeneratedColumn, Column, OneToMany, BaseEntity, ManyToOne} from 'typeorm';
-import {User} from './user';
+import User from './user';
 
-@Entity({name: 'userProps'})
+@Entity()
 export class UserProp extends BaseEntity {
     constructor() {
         super();
@@ -15,6 +15,6 @@ export class UserProp extends BaseEntity {
     @Column({type: 'varchar'})
     propValue!: string;
 
-    @ManyToOne(type => User, user => user.userId)
+    @ManyToOne(type => User, user => user.userProps)
     user!: User;
 }

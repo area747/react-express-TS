@@ -1,6 +1,6 @@
 import {BaseEntity, Entity, PrimaryGeneratedColumn} from 'typeorm';
 
-@Entity({name: 'auths'})
+@Entity()
 export class Auth extends BaseEntity {
     constructor(parameters: any) {
         super();

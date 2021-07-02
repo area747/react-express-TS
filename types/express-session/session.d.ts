@@ -1,3 +1,5 @@
+import EntityUser from 'server/src/entities/user';
+
 export {};
 // declare module 'express-session' {
 //     interface SessionData {
@@ -9,10 +11,6 @@ export {};
 // }
 declare global {
     namespace Express {
-        interface User {
-            id: string;
-            pw: string;
-            loginType: string;
-        }
+        type User = EntityUser;
     }
 }

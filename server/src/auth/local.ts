@@ -1,22 +1,17 @@
-import {Request, Response, NextFunction} from 'express';
-import passport from 'passport';
 import execute from 'execute';
+import {Request, Response, NextFunction} from 'express';
 import {Strategy as LocalStrategy, IStrategyOptionsWithRequest, VerifyFunction} from 'passport-local';
+import User from '../entities/user';
 
 const opt: IStrategyOptionsWithRequest = {usernameField: 'id', passwordField: 'pw', passReqToCallback: true, session: true};
 
-//tempt
-
 const localStrategy = new LocalStrategy(opt, async (req, id, pw, done) => {
-    const res = await execute('user', 'loginUser', {userId: id, userPw: pw});
-    if (res[0]) {
-        const user: Express.User = {
-            id: id,
-            pw: pw,
-            loginType: 'local',
-        };
-        return done(null, user);
-    } else {
+    try {
+        const user = await User.findOneOrFail({userId: id, userPw: pw});
+        if (user) return done(null, user);
+        else throw new Error('loginFail');
+    } catch (error) {
+        console.log(error);
         return done(null, false, {message: 'no'});
     }
 });

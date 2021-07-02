@@ -2,18 +2,19 @@ import passport from 'passport';
 import localStrategy from './local';
 import kakaoStrategy from './kakao';
 import execute from 'execute';
+import User from '../entities/user';
 
 export default (): void => {
     passport.use(localStrategy);
     passport.use(kakaoStrategy);
 
-    passport.serializeUser((user, done) => {
-        done(null, user.id);
+    passport.serializeUser((callBackuser, done) => {
+        const user = callBackuser as User;
+        done(null, user.seq);
     });
 
     passport.deserializeUser(async (userId: number, done) => {
-        const [res] = await execute('user', 'selectUser', {id: userId});
-        const user: Express.User = {id: res.userId, pw: res.userPw, loginType: res.loginType};
+        const user = await User.findOne({seq: userId});
         done(null, user);
     });
 };
