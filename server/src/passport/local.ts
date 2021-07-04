@@ -1,4 +1,4 @@
-import execute from 'execute';
+import execute from 'server/src/DB/sqlConnector';
 import {Request, Response, NextFunction} from 'express';
 import {Strategy as LocalStrategy, IStrategyOptionsWithRequest, VerifyFunction} from 'passport-local';
 import User from '../entities/user';

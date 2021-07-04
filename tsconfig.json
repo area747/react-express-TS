@@ -34,6 +34,7 @@
     "baseUrl": "./",
     "paths":{
       "types":["./types"],
+      "entity":["./server/src/entities"],
       "execute":["./server/src/DB"]
     },
     "isolatedModules": true,
@@ -44,6 +45,6 @@
   ],
   "include": [
     "server/src/**/*.ts"
-    //"./src/**/*"
+    ,"types/enum.ts"    //"./src/**/*"
   ]
 }

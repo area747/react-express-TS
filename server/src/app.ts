@@ -1,19 +1,22 @@
+//configs
+import dotenv from 'dotenv';
+dotenv.config();
+//types
+import {} from 'types/express-session/session';
+import {} from './enum/loginType';
 import e from 'express';
 import session from 'express-session';
 import path from 'path';
 import flash from 'connect-flash';
-import dotenv from 'dotenv';
 import passport from 'passport';
-import passportSetting from './auth';
+import passportSetting from './passport';
+import auth from './auth';
 import router from './router';
 import connectionOptions from './DB/typeormConfig';
 import {createConnection} from 'typeorm';
-//types
-import {} from 'types/express-session/session';
 
-dotenv.config();
-passportSetting();
 createConnection(connectionOptions).then(() => {
+    passportSetting();
     const app = e();
     const clientPath = path.join(process.cwd(), 'client', 'build');
     app.use(
