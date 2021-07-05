@@ -1,7 +1,11 @@
-import {Router, RequestHandler} from 'express';
-const router = Router();
+import {RequestHandler} from 'express';
+import {HTTPError} from '../error/class/HTTPError';
+
 const auth: RequestHandler = (req, res, next) => {
-    req.isAuthenticated;
+    try {
+        if (!req.isAuthenticated()) throw new HTTPError(401, '401 not authenticated');
+    } catch (error) {
+        next(error);
+    }
 };
-router.use();
-export default router;
+export default auth;

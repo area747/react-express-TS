@@ -14,6 +14,7 @@ import auth from './auth';
 import router from './router';
 import connectionOptions from './DB/typeormConfig';
 import {createConnection} from 'typeorm';
+import errorHandler from './error/errorHandler';
 
 createConnection(connectionOptions).then(() => {
     passportSetting();
@@ -32,7 +33,9 @@ createConnection(connectionOptions).then(() => {
     app.use(e.json());
     app.use(e.urlencoded({extended: true}));
     app.use(flash());
+    app.use(auth);
     app.use(router);
+    app.use(errorHandler);
 
     app.listen(7000);
 });

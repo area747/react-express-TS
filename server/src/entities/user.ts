@@ -1,5 +1,6 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToMany, BaseEntity, Unique} from 'typeorm';
+import {Entity, PrimaryGeneratedColumn, Column, OneToMany, BaseEntity, Unique, ManyToMany} from 'typeorm';
 import {LoginType} from '../enum/loginType';
+import Auth from './auth';
 import {UserProp} from './userProp';
 @Entity()
 @Unique(['userId', 'loginType'])
@@ -23,4 +24,7 @@ export default class User extends BaseEntity {
 
     @OneToMany(type => UserProp, userProp => userProp.user)
     userProps!: UserProp[];
+
+    @ManyToMany(type => Auth, auths => auths.users)
+    auths!: Auth[];
 }
