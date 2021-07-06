@@ -2,6 +2,8 @@ import e from 'express';
 import fs from 'fs';
 import path from 'path';
 import passport from 'passport';
+import {createUser} from 'server/src/appService/userService';
+import {LoginType} from 'server/src/enum/loginType';
 
 const router = e.Router();
 const clientPath = path.join(process.cwd(), 'client', 'build');
@@ -40,6 +42,10 @@ router.get('/react', (req, res, next) => {
     fs.readFile(path.join(clientPath, 'main.html'), (err, data) => {
         res.end(data);
     });
+});
+
+router.get('/createUser', (req, res, next) => {
+    createUser(req.query.userId as string, req.query.userPw as string, LoginType.local);
 });
 
 export default router;

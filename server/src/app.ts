@@ -33,7 +33,7 @@ createConnection(connectionOptions).then(() => {
     app.use(e.json());
     app.use(e.urlencoded({extended: true}));
     app.use(flash());
-    app.use(auth);
+    //app.use(auth);
     app.use(router);
     app.use(errorHandler);
 
