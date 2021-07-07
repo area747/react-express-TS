@@ -18,6 +18,5 @@ export default class Auth extends BaseEntity {
     authType = AuthType.admin;
 
     @ManyToMany(type => User, users => users.auths)
-    @JoinTable({name: 'userAuthJoin'})
-    users!: User[];
+    users?: User[];
 }

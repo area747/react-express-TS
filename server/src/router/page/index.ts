@@ -2,8 +2,8 @@ import e from 'express';
 import fs from 'fs';
 import path from 'path';
 import passport from 'passport';
-import {createUser} from 'server/src/appService/userService';
-import {LoginType} from 'server/src/enum/loginType';
+import {createUser} from '../../appService/userService';
+import {LoginType} from '../../enum/loginType';
 
 const router = e.Router();
 const clientPath = path.join(process.cwd(), 'client', 'build');
@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
     if (req.isAuthenticated()) {
         res.send('hello, World!');
     } else {
-        res.status(403).send('not authenticated');
+        res.status(403).send('not authenticated?????212312??');
     }
 });
 router.get('/debug', (req, res, next) => {

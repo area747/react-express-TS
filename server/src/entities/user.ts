@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToMany, BaseEntity, Unique, ManyToMany} from 'typeorm';
+import {Entity, PrimaryGeneratedColumn, Column, OneToMany, BaseEntity, Unique, ManyToMany, JoinTable} from 'typeorm';
 import {LoginType} from '../enum/loginType';
 import Auth from './auth';
 import {UserProp} from './userProp';
@@ -26,5 +26,6 @@ export default class User extends BaseEntity {
     userProps!: UserProp[];
 
     @ManyToMany(type => Auth, auths => auths.users)
+    @JoinTable({name: 'userAuthJoin'})
     auths!: Auth[];
 }
