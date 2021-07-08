@@ -103,8 +103,7 @@
     "start": "npm run build:live",
     "build": "node client/scripts/build.js",
     "build:live": "nodemon --watch 'server/src/**/*.ts' --exec \"ts-node\" -r tsconfig-paths/register server/src/app.ts",
-    "build:tsc": "nodemon — exec ts-node src/index.ts",
-    "test": "node scripts/test.js"
+    "build:tsc": "nodemon --watch server --delay 1 --exec ts-node server/src/app.ts"
   },
   "proxy": "http://localhost:7000",
   "eslintConfig": {
