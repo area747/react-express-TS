@@ -100,10 +100,11 @@
     "tsconfig-paths": "^3.9.0"
   },
   "scripts": {
-    "start": "npm run build:live",
+    "start": "npm run build:tsc",
     "build": "node client/scripts/build.js",
     "build:live": "nodemon --watch 'server/src/**/*.ts' --exec \"ts-node\" -r tsconfig-paths/register server/src/app.ts",
-    "build:tsc": "nodemon --watch server --delay 1 --exec ts-node server/src/app.ts"
+    "build:tsc": "nodemon --watch server --delay 1 --exec ts-node server/src/app.ts",
+    "test": "jest --watchAll --verbose"
   },
   "proxy": "http://localhost:7000",
   "eslintConfig": {
@@ -126,28 +127,30 @@
   },
   "jest": {
     "roots": [
-      "<rootDir>/src"
+      "<rootDir>"
     ],
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}",
+      "client/src/**/*.{js,jsx,ts,tsx}",
+      "server/src/**/*.{js,jsx,ts,tsx}",
       "!src/**/*.d.ts"
     ],
     "setupFiles": [
       "react-app-polyfill/jsdom"
     ],
     "setupFilesAfterEnv": [
-      "<rootDir>/src/setupTests.ts"
+      "<rootDir>/client/src/setupTests.ts"
     ],
     "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
-      "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
+      "<rootDir>/client/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
+      "<rootDir>/client/src/**/*.{spec,test}.{js,jsx,ts,tsx}",
+      "<rootDir>/server/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
     ],
     "testEnvironment": "jsdom",
-    "testRunner": "D:\\File\\work\\react-express\\node_modules\\jest-circus\\runner.js",
+    "testRunner": "D:\\work\\react-express-TS\\node_modules\\jest-circus\\runner.js",
     "transform": {
-      "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "<rootDir>/config/jest/babelTransform.js",
-      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-      "^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+      "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "<rootDir>/client/config/jest/babelTransform.js",
+      "^.+\\.css$": "<rootDir>/client/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)": "<rootDir>/client/config/jest/fileTransform.js"
     },
     "transformIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",

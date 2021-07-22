@@ -35,7 +35,8 @@
     "paths":{
       "types":["./types"],
       "entity":["./server/src/entities"],
-      "execute":["./server/src/DB"]
+      "execute":["./server/src/DB"],
+      "appController":["./server/src/appController"],
     },
     "isolatedModules": true,
     //"noEmit": true

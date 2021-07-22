@@ -14,4 +14,9 @@ const createUser = async (userId: string, userPw: string, loginType: LoginType):
     console.log(u);
 };
 
-export {createUser};
+const selectUser = async (userId: string): Promise<any> => {
+    const user = await User.findOne({where: {userId: userId}, relations: ['auths']});
+    return user;
+};
+
+export {createUser, selectUser};
