@@ -13,6 +13,7 @@ export default (): void => {
             done(null, user.seq);
         } catch (error) {
             console.log(error);
+            done(error);
         }
     });
 

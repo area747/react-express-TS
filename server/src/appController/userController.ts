@@ -1,14 +1,17 @@
 import {RequestHandler} from 'express';
 import {selectUser as service_selectUser} from '../appService/userService';
 
-const createUser: RequestHandler = (req, res, next) => {
-    const userId = req.body.userId;
-    const userPw = req.body.userPw;
-};
+export class UserController {
+    loginUser: RequestHandler = function (req, res, next) {
+        const userId = req.body.userId;
+        const userPw = req.body.userPw;
+    };
+    loginKakao: RequestHandler = function (req, res, next) {
+        //
+    };
 
-const selectUse: RequestHandler = (req, res, next) => {
-    const userId = req.body.userId;
-    service_selectUser(userId);
-};
-
-export {selectUse};
+    selectUse: RequestHandler = (req, res, next) => {
+        const userId = req.body.userId;
+        service_selectUser(userId);
+    };
+}

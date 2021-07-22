@@ -4,7 +4,6 @@ import path from 'path';
 import passport from 'passport';
 import {createUser} from '../../appService/userService';
 import {LoginType} from '../../enum/loginType';
-import {selectUse} from '../../appController/userController';
 
 const router = e.Router();
 const clientPath = path.join(process.cwd(), 'client', 'build');
@@ -48,7 +47,5 @@ router.get('/react', (req, res, next) => {
 router.get('/createUser', (req, res, next) => {
     createUser(req.query.userId as string, req.query.userPw as string, LoginType.local);
 });
-
-router.get('/selectUser', selectUse);
 
 export default router;
