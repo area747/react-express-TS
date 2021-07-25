@@ -31,12 +31,14 @@
       "./server/src/@types",
       "./@types",
     ],
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths":{
-      "types":["./types"],
+      "@@types":["./types"],
+      "container":["./server/src/container"],
+      "container/*":["./server/src/container/*"],
       "entity":["./server/src/entities"],
       "execute":["./server/src/DB"],
-      "appController":["./server/src/appController"],
+      "controller/*":["./server/src/appController/*"],
     },
     "isolatedModules": true,
     //"noEmit": true
