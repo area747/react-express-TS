@@ -1,18 +1,17 @@
-import {RequestHandler} from 'express';
+import * as express from 'express';
 import {UserController} from 'controller/userController';
-import {provide} from 'inversify-binding-decorators';
+import {controller, httpGet, request, response} from 'inversify-express-utils';
 
-@provide(UserControllerImpl)
+@controller('/user')
 export class UserControllerImpl implements UserController {
-    loginUser: RequestHandler = function (req, res, next) {
-        const userId = req.body.userId;
-        const userPw = req.body.userPw;
-        console.log('hi');
-    };
-    loginKakao: RequestHandler = function (req, res, next) {
+    constructor() {
         //
-    };
-    selectUse: RequestHandler = function (req) {
-        //
-    };
+    }
+
+    @httpGet('/login')
+    loginUser(@request() req: express.Request, @response() res: express.Response): string {
+        console.log(req.query.userId);
+        console.log('login');
+        return '';
+    }
 }

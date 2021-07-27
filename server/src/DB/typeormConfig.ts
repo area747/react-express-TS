@@ -8,7 +8,7 @@ const connectionOptions: ConnectionOptions = {
     password: process.env.DB_PW,
     database: process.env.DB_NAME,
     synchronize: true,
-    logging: true,
+    logging: ['log'],
     entities: ['server/src/entities/**/*.ts'],
     namingStrategy: new SnakeNamingStrategy(),
 };
