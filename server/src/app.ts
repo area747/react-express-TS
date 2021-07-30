@@ -4,7 +4,7 @@ dotenv.config();
 import 'reflect-metadata';
 import {Container} from 'inversify';
 import {buildProviderModule} from 'inversify-binding-decorators';
-import {interfaces, InversifyExpressServer, TYPE} from 'inversify-express-utils';
+import {InversifyExpressServer} from 'inversify-express-utils';
 import './appController';
 //types
 import {} from 'types/express-session/session';

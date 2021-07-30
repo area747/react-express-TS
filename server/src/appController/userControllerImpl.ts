@@ -1,9 +1,8 @@
 import * as express from 'express';
-import {UserController} from 'controller/userController';
 import {controller, httpGet, request, response} from 'inversify-express-utils';
 
 @controller('/user')
-export class UserControllerImpl implements UserController {
+export class UserControllerImpl {
     constructor() {
         //
     }
