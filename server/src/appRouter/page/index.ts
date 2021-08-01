@@ -12,7 +12,10 @@ router.get('/', (req, res, next) => {
     if (req.isAuthenticated()) {
         res.send('hello, World!');
     } else {
-        res.status(403).send('not authenticated');
+        fs.readFile(path.join(clientPath, 'index.html'), (err, data) => {
+            res.end(data);
+        });
+        // res.status(403).send('not authenticated');
     }
 });
 router.get('/debug', (req, res, next) => {
