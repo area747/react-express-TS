@@ -12,7 +12,7 @@ export class LoginController implements interfaces.Controller {
         return '로그인';
     }
 
-    @httpGet('/local', passport.authenticate('local'))
+    @httpGet('/local', passport.authenticate('local', {successRedirect: '/', failureRedirect: '/login'}))
     localLogin(@request() req: express.Request, @response() res: express.Response): void {
         //
     }

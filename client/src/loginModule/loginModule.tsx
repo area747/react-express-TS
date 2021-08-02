@@ -18,10 +18,15 @@ export class LoginModule extends Component<State> {
     render() {
         return (
             <div>
-                <Form>
+                <Form method="get" action="login/local">
                     <Row>
                         <Col>
                             <FormControl />
+                        </Col>
+                        <Col>
+                            <Button type="submit" variant="primary">
+                                {this.state.value}
+                            </Button>
                         </Col>
                     </Row>
                 </Form>
