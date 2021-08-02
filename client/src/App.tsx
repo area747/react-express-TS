@@ -5,12 +5,12 @@ import './App.css';
 import {LoginModule} from './loginModule/loginModule';
 
 class App extends Component {
-    renderLogin(num: number) {
-        return <LoginModule value={num} />;
+    renderLogin(string: string) {
+        return <LoginModule value={string} />;
     }
     render() {
         return (
-            <div>{this.renderLogin(5)}</div>
+            <div>{this.renderLogin('Login')}</div>
             // <div className="App">
             //     <header className="App-header">
             //         <img src={logo} className="App-logo" alt="logo" />

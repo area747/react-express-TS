@@ -11,6 +11,8 @@ export default (): void => {
         console.log('serializeUser');
         try {
             const user = callBackuser as User;
+            console.log(user);
+            console.log('user');
             done(null, user.seq);
         } catch (error) {
             console.log(error);
@@ -18,9 +20,9 @@ export default (): void => {
         }
     });
 
-    passport.deserializeUser(async (userId: number, done) => {
+    passport.deserializeUser(async (seq: number, done) => {
         console.log('deserializeUser');
-        const user = await User.findOne({seq: userId});
+        const user = await User.findOne({seq: seq});
         done(null, user);
     });
 };

@@ -22,24 +22,27 @@ import errorHandler from './error/errorHandler';
 
 createConnection(connectionOptions).then(() => {
     passportSetting();
+    const clientPath = path.join(process.cwd(), 'client', 'build');
     const container = new Container();
     container.load(buildProviderModule());
     const server = new InversifyExpressServer(container);
-    const clientPath = path.join(process.cwd(), 'client', 'build');
+    server.setConfig(app => {
+        app.use(
+            session({
+                secret: '#ABCDEFG',
+                resave: false,
+                saveUninitialized: true,
+            })
+        );
+        app.use(passport.initialize());
+        app.use(passport.session());
+        app.use(e.static(clientPath));
+        app.use(e.json());
+        app.use(e.urlencoded({extended: true}));
+        app.use(flash());
+    });
     const app = server.build();
-    app.use(
-        session({
-            secret: '#ABCDEFG',
-            resave: false,
-            saveUninitialized: true,
-        })
-    );
-    app.use(passport.initialize());
-    app.use(passport.session());
-    app.use(e.static(clientPath));
-    app.use(e.json());
-    app.use(e.urlencoded({extended: true}));
-    app.use(flash());
+
     //app.use(auth);
     app.use(router);
     app.use(errorHandler);

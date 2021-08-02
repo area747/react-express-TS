@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Button, ButtonToolbar, Col, Form, FormControl, Row} from 'react-bootstrap';
 
 interface State {
-    value: number;
+    value: string;
 }
 
 export class LoginModule extends Component<State> {
@@ -18,23 +18,17 @@ export class LoginModule extends Component<State> {
     render() {
         return (
             <div>
-                <Form method="get" action="login/local">
+                <Form method="post" action="login/local">
                     <Row>
                         <Col>
-                            <FormControl />
-                        </Col>
-                        <Col>
+                            <FormControl name="id" />
+                            <FormControl name="pw" type="password" />
                             <Button type="submit" variant="primary">
                                 {this.state.value}
                             </Button>
                         </Col>
                     </Row>
                 </Form>
-                <ButtonToolbar>
-                    <Button variant="primary" onClick={() => alert('click')}>
-                        {this.state.value}
-                    </Button>
-                </ButtonToolbar>
             </div>
         );
     }

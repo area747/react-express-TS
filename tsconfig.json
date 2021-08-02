@@ -39,6 +39,7 @@
       "entity":["./server/src/entities"],
       "execute":["./server/src/DB"],
       "controller/*":["./server/src/appController/*"],
+      "logger":["./server/src/logger/logger"]
     },
     "isolatedModules": true,
     //"noEmit": true
