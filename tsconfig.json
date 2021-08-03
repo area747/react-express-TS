@@ -24,31 +24,46 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "outDir": "./server/dist",
     "typeRoots": [
       "./node_modules/@types",
       "./server/src/@types",
-      "./@types",
+      "./@types"
     ],
     "baseUrl": ".",
-    "paths":{
-      "@@types":["./types"],
-      "container":["./server/src/container"],
-      "container/*":["./server/src/container/*"],
-      "entity":["./server/src/entities"],
-      "execute":["./server/src/DB"],
-      "controller/*":["./server/src/appController/*"],
-      "logger":["./server/src/logger/logger"]
+    "paths": {
+      "@@types": [
+        "./types"
+      ],
+      "container": [
+        "./server/src/container"
+      ],
+      "container/*": [
+        "./server/src/container/*"
+      ],
+      "entity": [
+        "./server/src/entities"
+      ],
+      "execute": [
+        "./server/src/DB"
+      ],
+      "controller/*": [
+        "./server/src/appController/*"
+      ],
+      "logger": [
+        "./server/src/logger/logger"
+      ]
     },
     "isolatedModules": true,
+    "noEmit": true
     //"noEmit": true
   },
   "exclude": [
     "node_modules"
   ],
   "include": [
-    "server/src/**/*.ts"
-    ,"types/enum.ts"    //"./src/**/*"
+    "server/src/**/*.ts",
+    "types/enum.ts" //"./src/**/*"
   ]
 }
